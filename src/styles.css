@@ -255,7 +255,7 @@ a {
   margin: clamp(2.5rem, 5vw, 4rem) 0 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1.5rem, 3vw, 2.75rem);
 }
 
@@ -267,7 +267,7 @@ a {
 .plate__image {
   display: block;
   width: 100%;
-  height: 220px;
+  height: auto;
   background: var(--slate);
 }
 
@@ -382,10 +382,20 @@ a {
   font-size: var(--step--1);
 }
 
+@media (max-width: 48rem) {
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 34rem) {
   .masthead__inner {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .gallery {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .notify__submit {
